@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
+import util
 
-CIPHERTEXT = """
+EXAMPLE_CIPHERTEXT = """
 nuljbibradwibrgijidooqmlmphourpdskhxxe
 kiurpsswuguomiqlqnzymhamadcszsoulitadv
 xibohkfefevxywgmeehiptgxcwbrwiyroesjbs
@@ -20,40 +21,12 @@ mbtusamsscjpkpjepmeigdyhiilxmyohhhygmu
 lyiretzuwsgrlyyvemawbxnivtyjuafsyxacgd
 nesigd
 """
-ALPHABET = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-]
 
 
 def freq_map(text: str) -> dict[str, int]:
     text.lower()
     map = dict()
-    for alph in ALPHABET:
+    for alph in util.ALPHABET:
         map[alph] = 0
     for char in text:
         freq = map.get(char)
@@ -79,7 +52,7 @@ def graph_freq_map(map: dict[str, int], show_heights=True):
 
 
 def main():
-    map = freq_map(CIPHERTEXT)
+    map = freq_map(EXAMPLE_CIPHERTEXT)
     graph_freq_map(map)
 
 
