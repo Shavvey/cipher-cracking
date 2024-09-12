@@ -1,5 +1,4 @@
 from util import ALPHABET, ASCII_TO_ORD, ORD_TO_ASCII
-import fitness as fit
 
 EXAMPLE = """
 It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their
@@ -18,7 +17,7 @@ Solo from the clutches of the vile gangster Jabba the Hutt
 """
 
 
-def vig_encrpytion(key: str, plaintext: str) -> str:
+def encrypt(key: str, plaintext: str) -> str:
     plaintext = plaintext.lower()
     key_length = len(key)
     ciphertext = ""
@@ -33,7 +32,7 @@ def vig_encrpytion(key: str, plaintext: str) -> str:
     return ciphertext
 
 
-def vig_decryption(key: str, ciphertext: str) -> str:
+def decrypt(key: str, ciphertext: str) -> str:
     ciphertext = ciphertext.lower()
     key_length = len(key)
     plaintext = ""
@@ -49,9 +48,9 @@ def vig_decryption(key: str, ciphertext: str) -> str:
 
 
 def main():
-    ciphertext = vig_encrpytion("hellothere", EXAMPLE)
+    ciphertext = encrypt("hellothere", EXAMPLE)
     print(f"---CIPHERTEXT---{ciphertext}")
-    plaintext = vig_decryption("hellothere", ciphertext)
+    plaintext = decrypt("hellothere", ciphertext)
     print(f"---PLAINTEXT---{plaintext}")
 
 

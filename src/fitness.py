@@ -22,7 +22,7 @@ Solo from the clutches of the vile gangster Jabba the Hutt
 def get_textragrams(text: str) -> list[float]:
     text = text.lower()
     # get rid of spaces new lines and any punctuation
-    text = text.translate(str.maketrans("", "", string.punctuation + "\n" + " "))
+    text = text.translate(str.maketrans("", "", string.punctuation + "\n" + " " + '"'))
     tetrafreq = [0.00] * 26 * 26 * 26 * 26
     for i in range(len(text) - 3):
         x = (
