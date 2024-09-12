@@ -1,3 +1,4 @@
 *.zip
 ciphertext/
 __pycache__
+.DS_Store
