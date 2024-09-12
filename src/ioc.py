@@ -1,30 +1,57 @@
 from util import ALPHABET
+import string
+
+EXAMPLE = """
+Px td o ilvzsk sq nwopp ney. Vpmse ztrglwstdl, zximrmyr tkvq r lphopb uhwv, lhzp hcg alvmy
+jtcgm cmtxvvj lutprjx alp pjbs Krphgetq Xttzvl. Hfcwgn xyi ieeezx, Yisis watsl teeenio ec lairp
+zincsm wprrz xz evx Lqgmyi'd fzmpqrxl apldhu, xyi KILEV LAEI, eu ecxcklh jthgp dhtamfr
+dmes sgvyxl wshpf mv hvwavzj og lrkmyi awoglx. Gyywfpr uf xyi Lqatfx'z wzrpwepf tniexz,
+Tctbvlwj Plml covlw ysti lmctyh yiy welflomg, gbwezrbhr fj alp dhhsie tseyd hahx teu wlgs alv
+givtwp ogk vvwascp tkliust xz evx neceec. Te wl h hrvr xtxs yvv kll Vpmsesmfr. Hpescnnl kll
+Hplha Zxrv oed msxu hvwavzjsw, Pqgiymlw hkvsgw oegp rkpzvr alp Csulp wsygpd tkvq kllmc
+swwkie fhwp lbw wyiwbio evxt etvvwd evx neceec. Pgowprx xoi ocstkiu Mttpcwts
+Wkeyjwpsm, h kisbt zq tkliust jtrvmlvj plh mj Znri Jofalwyxy lrw lwelpepwyik e ypk llgiia flds
+hu xyi yixzhx pgv avvwo cy Oskl. Alp pjbs pfvk Hlcha Ceuiy, smdslziu apxs qwgkmek fsfyu
+Lrcnesopc, vtz hzwweenvxk xysbwlyrl vj iitsep dkvfvw prez hal jrv yilnvxz sw wwenp. Znri
+Jofalwyxy lrw yieffglh ks omd scfl tceuie zt Mhxfsprp tb tu ekxlqae hh yijgbi stg yymvrk Lly
+Ghss wvvq ess vsykgoid zt moi mmsi rlbzzxvv Qemmo moi Yyax.
+"""
 
 
-def index_of_coincidence(text: str):
-    counts = [0] * 26
-    for char in text:
-        counts[ALPHABET.index(char)] += 1
-    numer = 0
+def get_count(text: str) -> int:
+    count = 0
+    for i in text:
+        if i in ALPHABET:
+            count += 1
+    return count
+
+
+def ioc(text: str) -> float:
+    letterCounts = []
+
+    # Loop through each letter in the alphabet - count number of times it appears
+    for i in range(len(ALPHABET)):
+        count = 0
+        for j in text:
+            if j == ALPHABET[i]:
+                count += 1
+        letterCounts.append(count)
+
+    # Loop through all letter counts, applying the calculation (the sigma part)
     total = 0
-    for i in range(26):
-        numer += counts[i] * (counts[i] - 1)
-        total += counts[i]
-    return 26 * numer / (total * (total - 1))
+    for i in range(len(letterCounts)):
+        ni = letterCounts[i]
+        total += ni * (ni - 1)
+
+    n = get_count(text)
+    total = float(total) / ((n * (n - 1)))
+    return total
 
 
-def ioc(ciphertext: str) -> float | None:
-    found = False
-    period = 0
-    while not found:
-        period += 1
-        slices = [""] * period
-        for i in range(len(ciphertext)):
-            slices[i % period] += ciphertext[i]
-        sum = 0
-        for i in range(period):
-            sum += index_of_coincidence(slices[i])
-        ioc = sum / period
-        if ioc > 1.6:
-            found = True
-            return ioc
+def main():
+    ioc_val = ioc(EXAMPLE)
+    print(f"IOC: {ioc_val}")
+
+
+if __name__ == "__main__":
+    main()

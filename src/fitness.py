@@ -1,6 +1,9 @@
 from util import ALPHABET
 from math import log
-import string
+
+import re
+
+PATTERN = re.compile(r"[\W_]+", re.UNICODE)
 
 ENGLISH_TEXT = """
 It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their
@@ -21,8 +24,8 @@ Solo from the clutches of the vile gangster Jabba the Hutt
 
 def get_textragrams(text: str) -> list[float]:
     text = text.lower()
+    text = PATTERN.sub("", text)
     # get rid of spaces new lines and any punctuation
-    text = text.translate(str.maketrans("", "", string.punctuation + "\n" + " " + '"'))
     tetrafreq = [0.00] * 26 * 26 * 26 * 26
     for i in range(len(text) - 3):
         x = (
@@ -40,8 +43,7 @@ def get_textragrams(text: str) -> list[float]:
 def fitness(text) -> float:
     tetrafreq = get_textragrams(ENGLISH_TEXT)
     text = text.lower()
-    # get rid of spaces new lines and any punctuation
-    text = text.translate(str.maketrans("", "", string.punctuation + "\n" + " "))
+    text = PATTERN.sub("", text)
     result = 0
     for i in range(len(text) - 3):
         tetragram = text[i : i + 4]
