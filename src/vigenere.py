@@ -51,9 +51,9 @@ def vig_decryption(key: str, ciphertext: str) -> str:
 
 def get_textragrams(text: str) -> list[float]:
     text = text.lower()
-    text.translate(str.maketrans("", "", string.punctuation))
-    print(f"Final text: {text}")
-    tetrafreq: list[float] = [0.00] * 26 * 26 * 26
+    # get rid of spaces new lines and any punctuation
+    text = text.translate(str.maketrans("", "", string.punctuation + "\n" + " "))
+    tetrafreq = [0.00] * 26 * 26 * 26 * 26
     for i in range(len(text) - 3):
         x = (
             ALPHABET.index(text[i]) * 26 * 26 * 26
@@ -67,8 +67,11 @@ def get_textragrams(text: str) -> list[float]:
     return tetrafreq
 
 
-def fitness(text):
+def fitness(text) -> float:
     tetrafrequencies = get_textragrams(text)
+    text = text.lower()
+    # get rid of spaces new lines and any punctuation
+    text = text.translate(str.maketrans("", "", string.punctuation + "\n" + " "))
     result = 0
     for i in range(len(text) - 3):
         tetragram = text[i : i + 4]
@@ -88,10 +91,8 @@ def fitness(text):
 
 
 def main():
-    ciphertext = vig_encrpytion("hellothere", EXAMPLE)
-    print(ciphertext)
-    plaintext = vig_decryption("hellothere", ciphertext)
-    print(plaintext)
+    e = fitness(vig_encrpytion("hellothere", EXAMPLE))
+    print(e)
 
 
 if __name__ == "__main__":
