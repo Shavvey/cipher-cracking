@@ -3,7 +3,7 @@ from math import log
 
 import re
 
-PATTERN = re.compile(r"[\W_]+", re.UNICODE)
+PATTERN = re.compile(r"[\W_\d]+", re.UNICODE)
 
 ENGLISH_TEXT = """
 It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their
@@ -40,8 +40,17 @@ def get_textragrams(text: str) -> list[float]:
     return tetrafreq
 
 
+def get_english_freq() -> list[float]:
+    shakespeare = open("../t8.shakespeare.txt").read()
+    shakespeare = PATTERN.sub("", shakespeare.lower())
+    return get_textragrams(shakespeare)
+
+
+ENGLISH_TETRAFREQ = get_english_freq()
+
+
 def fitness(text) -> float:
-    tetrafreq = get_textragrams(ENGLISH_TEXT)
+    tetrafreq = ENGLISH_TETRAFREQ
     text = text.lower()
     text = PATTERN.sub("", text)
     result = 0

@@ -1,25 +1,15 @@
 import fitness as f
 import vigenere as vig
-import re, string
 
-PATTERN = re.compile('[\W_]+', re.UNICODE)
 
 EXAMPLE = """
-I kxjw mtmf eewcyj yurql yrd qwex. Mnf wurnags xb xxsaykl yc vgthaykm ur oxiqp wggemqxrhm
-zgk m Ketdxjnw Tewvltdwnkaut chslccgg ur Phmsdnwk Egvxnfn ul mti Axw Pnrava Maltlcolx
-aj Zbnlwa sgp Xrvhqxfgzk (RZM), UVJ zgk flr lpurhy, hr 2025. Ef t Pk.M. mlnpiam iq Lieigxrk
-Sfryfvq, M nf edpyj ma gbgturvmmq ql tcdmyebo eaw rhbyskol fdioum lh eyciouc nzx pictrwvyfm
-ilvee idllaqvvgg ph yvnoegboqjf sgp gnkeha agtxw. Garrdazhgx zr afjxwfug ptrhnl,
-A amzr weynfgiqh fmrrwa sgmplmifjf, hkafyxm-vxfnbzk, ngd fxgenzmpttlxh kdupyl tkjn A
-uqpvxvh fimep qnde pn uf xrjrvtley lxmgubnj xl jxeinkck jmkbexngt. Ph wgndwrpout cf Vdccmojauhak
-eaw Asyfavmxvhnv, jfggs avmh ph ifzamaz rhbyskol vg Cuhjltzeyrslb ix Wukvmao
-Fulxdqnkklwa, zte tehvlmyv fq avmh d bidbp jbnngjnahz ma uowq nzxavrmifjf sgp ecillnx
-slbipms ro wgfbygxr vlcwgoi. Vg agmclbar, V tm fxhxbpiam iq vs suupvmy wx gsgmkr kevyiflufveiwryk
-lggu ts dbmalfmaz iq cysvtmaz, gujxags, qrgtracfz exhweqcm, sgp gbeldkijtfmaz
-oq aykxmvpa puxdwvfw. V tm fxgebfxrw tr jwswqqvv ealydeqrpx aqm qgnxh tkedcfq tbtexcljnw
-mti bipranmguxl mo fxhlkufhme wx nzx hmokaqc uutpizbc fxgenzmgr aw cbw GYX.
-Gaaqt sgn rse voqbcvxdmaz mb jjheugnmirw zgk flvl avbckmmrglhly. C dhao shrzjlv ma xux
-prbmauupvmy ro xaloyfliqp bgp U gng crwnjbnygx tr cbw wqtnktpnhl’l ssnes. Wqufd ksh, liu.
+ucicjua, ksblnq, yfcgxgjmcj, cmgh bp ymqi mtvh; t cmiv bh fjcy awvatv, czt rk gztmhp hgi. kpx iktl rdrb fic oo jemml eueep pymf; xwp gmku ql sue ilpvzkis hird kpxmg molaj; ah pte ir xv ebxw nacorz. mlt yozhv jkyifs
+fwkp msao ymq tixwpc wyo ruumitoso: zn bx lprc of, qm apd a enzmosjd fyqcb, trs rrgamwnwaj hypy ktihlr yjjexv’s tt. faim, nrspr jardx su mrspla trs ehc nvam–jdc bpqkcl mh ln fkewnvpmlc irv; ls pce rdvg tpa, llj dfvhyglbja dmg– gdxe g pf aiipv il yrmleg’d fsjvztp. wp wyo dg yvxpnb, brqmlufl yju rnwi eo ka: scm fgftso jirw wp wyo ruumitoso; rvw fgftso za tr wznmqiiupt xal. dv ptxw mrmqxpm qpyy awgbbztd hmiv bh vdxe
+udfax vpysmij lbh ise eaemkea nodbvzl jxwl: beu bamh tn awvatv hpek wdjbxxzuq? symg xwlt rdv xhsg sata tzbis, nacorz aeis wclk:
+iffxeimj jphyao bc irlx su dtcnemk wiffd: uvb uvjeuq orgl lt haq wdjbxxzuq; wel uvjeuq ej ig ldyosnrjei bln. wkl iep std qav baei zn rdv tnttccyh z bavxne nnvaxripd fed i dmcrlw yiwpr, lsiad ym wms ehpetm kiufsc: sra mlxd akxzbbsc?
+jer xicmyh dawo ym peh lmzekqhyh; lnb, olzx, lt ts yj ywgsjcazhv utr. x dpcwb vhx iz dgogzhzt hhyp sznxjd snkbm, uyi sepa z if xd dpcwb eaei t dm gewp. cdf ajh uqw pdge fed wggt, yor szbasje cyqjm: plpe cyqjm pmishmhua rsj ehcj, kw fsjcn dki pbq?
+d uubcdmgx! isos wib ypto tm xicmmhs bcwjbl, eco mcj yioi azsr pymbv gpaqke. jxeg hird dm; fc wpapp za br ise akwnbr isepa nqml rleqwi,
+igh x xuqp ginwt eijh zb vsbp byyb bh qt.
 """
 
 
